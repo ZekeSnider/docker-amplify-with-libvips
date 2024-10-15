@@ -31,7 +31,40 @@ FROM amazonlinux:2023.5.20241001.1
 # ENV LANG=en_US.UTF-8
 # ENV LC_ALL en_US.UTF-8
 
-COPY install.sh /tmp/install.sh
-RUN /tmp/install.sh
+RUN dnf update -y
+RUN dnf --quiet --assumeyes groupinstall "Development Tools"
+RUN dnf install -y \
+  gcc \
+  make \
+  bzip2 \
+  openssl-devel \
+  readline-devel \
+  zlib-devel \
+  git \
+  wget \
+  tar \
+  libffi-devel \
+  libyaml-devel \
+  meson \
+  pkgconf-pkg-config \
+  expat-devel \
+  glib2-devel \
+  libjpeg-turbo-devel \
+  libpng-devel \
+  giflib-devel \
+  libexif
+
+RUN dnf swap gnupg2-minimal gnupg2-full -y
+
+RUN touch ~/.bash_profile
+
+COPY install_node.sh /tmp/install_node.sh
+RUN /tmp/install_node.sh
+
+COPY install_ruby.sh /tmp/install_ruby.sh
+RUN /tmp/install_ruby.sh
+
+COPY install_libvips.sh /tmp/install_libvips.sh
+RUN /tmp/install_libvips.sh
 
 ENTRYPOINT [ "bash", "-c" ]
