@@ -9,28 +9,6 @@
 # It points to the standard shared Amazon Linux image, with a versioned tag.
 FROM amazonlinux:2023.5.20241001.1
 
-# # Framework Versions
-# ENV VERSION_NODE_8=8.12.0
-# ENV VERSION_NODE_10=10.16.0
-# ENV VERSION_NODE_12=12
-# ENV VERSION_NODE_14=14
-# ENV VERSION_NODE_16=16
-# ENV VERSION_NODE_17=17
-# ENV VERSION_NODE_DEFAULT=$VERSION_NODE_14
-# ENV VERSION_RUBY_2_4=2.4.6
-# ENV VERSION_RUBY_2_6=2.6.3
-# ENV VERSION_RUBY_3_0=3.0.1
-# ENV VERSION_BUNDLER=2.0.1
-# ENV VERSION_RUBY_DEFAULT=$VERSION_RUBY_2_4
-# ENV VERSION_HUGO=0.75.1
-# ENV VERSION_YARN=1.22.0
-# ENV VERSION_AMPLIFY=6.3.1
-
-# # UTF-8 Environment
-# ENV LANGUAGE en_US:en
-# ENV LANG=en_US.UTF-8
-# ENV LC_ALL en_US.UTF-8
-
 RUN dnf update -y
 RUN dnf --quiet --assumeyes groupinstall "Development Tools"
 RUN dnf install -y \
@@ -49,10 +27,18 @@ RUN dnf install -y \
   pkgconf-pkg-config \
   expat-devel \
   glib2-devel \
-  libjpeg-turbo-devel \
   libpng-devel \
   giflib-devel \
-  libexif
+  libexif \
+  libexif-devel \
+  cmake \
+  autoconf \
+  libtool \
+  nasm \
+  turbojpeg \
+  turbojpeg-devel \
+  libjpeg-turbo \
+  libjpeg-turbo-devel
 
 RUN dnf swap gnupg2-minimal gnupg2-full -y
 

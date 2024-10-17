@@ -4,7 +4,7 @@
 INSTALL_DIR=/usr/local
 if [ ! -e ${INSTALL_DIR}/bin/vips ]; then
   VIPS_VERSION=8.15.2
-  # MOZJPEG_VERSION=4.1.1
+  MOZJPEG_VERSION=3.3.1
   # Optional dependencies
   dnf --quiet --assumeyes install 
 
@@ -24,14 +24,4 @@ if [ ! -e ${INSTALL_DIR}/bin/vips ]; then
   ldconfig
 
   echo "Installed $(vips --version)"
-
-  # dnf install nasm -y
-  # cd /tmp/
-  # wget https://github.com/mozilla/mozjpeg/archive/v${MOZJPEG_VERSION}.tar.gz
-  # tar -xzf v${MOZJPEG_VERSION}.tar.gz
-  # cd mozjpeg-${MOZJPEG_VERSION}
-  # autoreconf -fiv
-  # mkdir build && cd build
-  # sh ../configure
-  # make install
 fi
