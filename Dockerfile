@@ -1,10 +1,3 @@
-# This is an image that takes the AWS Amplify Docker file and just adds libvips. How I built it:
-# - Get the Dockerfile in AWS Amplify Console
-# - Add the libvips commands
-# - Create a custom AWS Amplify Docker image (https://docs.aws.amazon.com/amplify/latest/userguide/custom-build-image.html) and publish it to Docker HUB (https://hub.docker.com/repository/docker/thegrizzlylabs/docker-amplify-with-libvips/general)
-#   Note that to build the Linux image on Mac, you need to pass the platform flag: docker build --platform="linux/amd64"  -t amplify-with-libvips .
-# - Point AWS Amplify to our Docker HUB image.
-
 # Use the standard Amazon Linux base, provided by ECR/KaOS
 # It points to the standard shared Amazon Linux image, with a versioned tag.
 FROM amazonlinux:2023.5.20241001.1

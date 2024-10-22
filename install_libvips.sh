@@ -4,7 +4,6 @@
 INSTALL_DIR=/usr/local
 if [ ! -e ${INSTALL_DIR}/bin/vips ]; then
   VIPS_VERSION=8.15.2
-  MOZJPEG_VERSION=3.3.1
   # Optional dependencies
   dnf --quiet --assumeyes install 
 
